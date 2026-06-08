@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+torch
+transformers
+sentencepiece
+accelerate
+numpy
+pydantic
+safetensors
