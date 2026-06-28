@@ -1,0 +1,77 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*serviceAccount*.json
+*service-account*.json
+*firebase-adminsdk*.json
+local_secrets.*
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+*.log
+
+# Hugging Face / model artifacts
+backend/saved_models/
+saved_models/
+models/
+model_cache/
+.cache/
+hf_cache/
+huggingface/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.onnx
+
+# Flutter / Dart
+**/.dart_tool/
+**/build/
+**/.packages
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/coverage/
+
+# Android / iOS / desktop generated files
+**/.gradle/
+**/android/.gradle/
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/ephemeral/
+**/macos/Flutter/ephemeral/
+**/windows/flutter/ephemeral/
+**/linux/flutter/ephemeral/
+
+# IDE and OS files
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Archives and temporary exports
+*.zip
+*.tar
+*.gz
+*.7z
+*.rar
+*.tmp
+*.bak
+
+# Notebook checkpoints
+.ipynb_checkpoints/
