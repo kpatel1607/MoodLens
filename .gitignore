@@ -36,6 +36,9 @@ backend/saved_models/
 hf_moodlens_api/
 hf_space/
 spaces/
+kunj-portfolio/
+portfolio_space/
+backups/
 /models/
 /model_cache/
 .cache/
