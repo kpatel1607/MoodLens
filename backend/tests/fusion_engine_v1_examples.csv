@@ -1,0 +1,41 @@
+category,text,expected_mood,expected_sarcasm
+literal_positive,I finally completed my project and I feel proud.,Positive,Not Sarcastic
+literal_positive,Today was peaceful and I enjoyed spending time with my family.,Positive,Not Sarcastic
+literal_positive,I solved a difficult bug and it made me really happy.,Positive,Not Sarcastic
+literal_positive,My presentation went well and I feel confident.,Positive,Not Sarcastic
+literal_positive,I am grateful for the support I received today.,Positive,Not Sarcastic
+literal_negative,I feel exhausted and overwhelmed today.,Negative,Not Sarcastic
+literal_negative,The server crashed before the demo.,Negative,Not Sarcastic
+literal_negative,I failed the exam and I feel disappointed.,Negative,Not Sarcastic
+literal_negative,I am anxious about tomorrow's interview.,Negative,Not Sarcastic
+literal_negative,Everything went wrong today and I feel tired.,Negative,Not Sarcastic
+literal_neutral,I went to college today and attended my lectures.,Neutral,Not Sarcastic
+literal_neutral,I had lunch and then studied for two hours.,Neutral,Not Sarcastic
+literal_neutral,The meeting started at 10 AM and ended at 11 AM.,Neutral,Not Sarcastic
+literal_neutral,I submitted the form and received a confirmation email.,Neutral,Not Sarcastic
+clear_sarcasm,"Great, the app crashed during my final demo.",Negative with Sarcasm,Sarcastic
+clear_sarcasm,"Amazing, my assignment got deleted right before submission.",Negative with Sarcasm,Sarcastic
+clear_sarcasm,"Wonderful, another deadline appeared out of nowhere.",Negative with Sarcasm,Sarcastic
+clear_sarcasm,"Perfect, my laptop stopped working before the exam.",Negative with Sarcasm,Sarcastic
+emotional_contradiction,I am so happy my best friend ignored me.,Negative with Sarcasm,Sarcastic
+emotional_contradiction,I really appreciate being blamed for something I did not do.,Negative with Sarcasm,Sarcastic
+emotional_contradiction,I love when people cancel plans after I get ready.,Negative with Sarcasm,Sarcastic
+emotional_contradiction,Thanks for making my already stressful day even harder.,Negative with Sarcasm,Sarcastic
+vague_uncertain,Today was certainly something.,Neutral / Uncertain,Uncertain
+vague_uncertain,That was an interesting experience.,Neutral / Uncertain,Uncertain
+vague_uncertain,I guess that happened.,Neutral / Uncertain,Uncertain
+vague_uncertain,"Okay then, that was unexpected.",Neutral / Uncertain,Uncertain
+coding,The API finally works after three hours of debugging.,Positive,Not Sarcastic
+coding,"Great, one small change broke the entire backend.",Negative with Sarcasm,Sarcastic
+coding,The model accuracy improved today and I feel motivated.,Positive,Not Sarcastic
+coding,"Perfect, the deployment failed again after saying it was successful.",Negative with Sarcasm,Sarcastic
+student_life,I studied well today and I feel prepared for the exam.,Positive,Not Sarcastic
+student_life,"Wonderful, another surprise test before I even finished the last assignment.",Negative with Sarcasm,Sarcastic
+student_life,I am worried because I have too many deadlines this week.,Negative,Not Sarcastic
+student_life,I completed my notes and felt relieved.,Positive,Not Sarcastic
+social_context,My friend supported me when I was stressed.,Positive,Not Sarcastic
+social_context,I felt hurt because my friend ignored my message.,Negative,Not Sarcastic
+social_context,"Lovely, everyone remembered me only when they needed help.",Negative with Sarcasm,Sarcastic
+multiline_context,"The backend failed again. I fixed the issue after debugging for hours. I feel tired but satisfied.",Mixed,Not Sarcastic
+borderline,Nice.,Neutral / Uncertain,Uncertain
+borderline,This is exactly what I expected.,Neutral / Uncertain,Uncertain
