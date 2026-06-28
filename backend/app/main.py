@@ -33,3 +33,31 @@ def list_routes():
         }
         for route in app.routes
     ]
+
+
+@app.get("/debug/models")
+def debug_models():
+    from app.core.config import (
+        EMOTION_MODEL_DIR,
+        SARCASM_MODEL_DIR,
+        SARCASM_THRESHOLD
+    )
+    from app.services.model_loader import (
+        emotion_model,
+        emotion_tokenizer,
+        sarcasm_model,
+        sarcasm_tokenizer
+    )
+
+    sarcasm_label2id = sarcasm_model.config.label2id
+
+    return {
+        "emotion_model": EMOTION_MODEL_DIR,
+        "sarcasm_model": SARCASM_MODEL_DIR,
+        "emotion_labels": emotion_model.config.id2label,
+        "sarcasm_labels": sarcasm_model.config.id2label,
+        "emotion_tokenizer_class": emotion_tokenizer.__class__.__name__,
+        "sarcasm_tokenizer_class": sarcasm_tokenizer.__class__.__name__,
+        "sarcastic_index": sarcasm_label2id.get("Sarcastic", 1),
+        "sarcasm_threshold": SARCASM_THRESHOLD
+    }
