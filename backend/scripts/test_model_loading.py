@@ -2,62 +2,62 @@ import os
 import sys
 from pathlib import Path
 
+os.environ["TRANSFORMERS_NO_TF"] = "1"
+os.environ["USE_TF"] = "0"
+
+from transformers import (
+    AutoConfig,
+    AutoModelForSequenceClassification,
+    AutoTokenizer,
+)
+
 
 BACKEND_DIR = Path(__file__).resolve().parents[1]
 PROJECT_DIR = BACKEND_DIR.parent
 LOCAL_EMOTION = PROJECT_DIR / "saved_models" / "emotion_v2"
 LOCAL_SARCASM = PROJECT_DIR / "saved_models" / "sarcasm_v4"
 
-if LOCAL_EMOTION.is_dir():
-    os.environ.setdefault("MOODLENS_EMOTION_MODEL_ID", str(LOCAL_EMOTION))
-
-if LOCAL_SARCASM.is_dir():
-    os.environ.setdefault("MOODLENS_SARCASM_MODEL_ID", str(LOCAL_SARCASM))
-
 sys.path.insert(0, str(BACKEND_DIR))
 
-from app.core.config import (  # noqa: E402
-    EMOTION_MODEL_DIR,
-    SARCASM_MODEL_DIR,
-    SARCASM_THRESHOLD,
-)
-from app.services.model_loader import (  # noqa: E402
-    emotion_model,
-    emotion_tokenizer,
-    sarcasm_model,
-    sarcasm_tokenizer,
-)
+from app.core.config import SARCASM_THRESHOLD  # noqa: E402
 
 
 SAMPLE_TEXT = "I finally completed my project and I feel proud."
 
 
+def load_one(name, path):
+    print(f"{name} model: {path}", flush=True)
+    config = AutoConfig.from_pretrained(path)
+    print(f"{name} id2label: {config.id2label}", flush=True)
+    print(f"{name} label2id: {config.label2id}", flush=True)
+
+    tokenizer = AutoTokenizer.from_pretrained(path, use_fast=True)
+    tokens = tokenizer(
+        SAMPLE_TEXT,
+        return_tensors="pt",
+        truncation=True,
+        max_length=128,
+    )
+    print(f"{name} tokenizer: {tokenizer.__class__.__name__}", flush=True)
+    print(f"{name} token keys: {sorted(tokens.keys())}", flush=True)
+
+    model = AutoModelForSequenceClassification.from_pretrained(path)
+    print(f"{name} loaded num_labels: {model.config.num_labels}", flush=True)
+    return model, tokenizer
+
+
 def main():
-    print("emotion model:", EMOTION_MODEL_DIR)
-    print("sarcasm model:", SARCASM_MODEL_DIR)
-    print("emotion id2label:", emotion_model.config.id2label)
-    print("sarcasm id2label:", sarcasm_model.config.id2label)
-    print("sarcasm label2id:", sarcasm_model.config.label2id)
-    print("backend sarcastic class index:", sarcasm_model.config.label2id.get("Sarcastic", 1))
-    print("emotion tokenizer:", emotion_tokenizer.__class__.__name__)
-    print("sarcasm tokenizer:", sarcasm_tokenizer.__class__.__name__)
-    print("sarcasm threshold:", SARCASM_THRESHOLD)
+    emotion_model, _ = load_one("emotion", LOCAL_EMOTION)
+    del emotion_model
 
-    emotion_tokens = emotion_tokenizer(
-        SAMPLE_TEXT,
-        return_tensors="pt",
-        truncation=True,
-        max_length=128,
-    )
-    sarcasm_tokens = sarcasm_tokenizer(
-        SAMPLE_TEXT,
-        return_tensors="pt",
-        truncation=True,
-        max_length=128,
-    )
+    sarcasm_model, _ = load_one("sarcasm", LOCAL_SARCASM)
 
-    print("emotion token keys:", sorted(emotion_tokens.keys()))
-    print("sarcasm token keys:", sorted(sarcasm_tokens.keys()))
+    print(
+        "backend sarcastic class index:",
+        sarcasm_model.config.label2id.get("Sarcastic", 1),
+        flush=True,
+    )
+    print("sarcasm threshold:", SARCASM_THRESHOLD, flush=True)
 
 
 if __name__ == "__main__":

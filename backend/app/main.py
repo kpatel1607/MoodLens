@@ -40,7 +40,8 @@ def debug_models():
     from app.core.config import (
         EMOTION_MODEL_DIR,
         SARCASM_MODEL_DIR,
-        SARCASM_THRESHOLD
+        SARCASM_THRESHOLD,
+        USE_LOCAL_MODELS
     )
     from app.services.model_loader import (
         emotion_model,
@@ -54,6 +55,7 @@ def debug_models():
     return {
         "emotion_model": EMOTION_MODEL_DIR,
         "sarcasm_model": SARCASM_MODEL_DIR,
+        "loading_mode": "local" if USE_LOCAL_MODELS else "huggingface",
         "emotion_labels": emotion_model.config.id2label,
         "sarcasm_labels": sarcasm_model.config.id2label,
         "emotion_tokenizer_class": emotion_tokenizer.__class__.__name__,

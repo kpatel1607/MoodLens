@@ -9,9 +9,11 @@ LOCAL_EMOTION = PROJECT_DIR / "saved_models" / "emotion_v2"
 LOCAL_SARCASM = PROJECT_DIR / "saved_models" / "sarcasm_v4"
 
 if LOCAL_EMOTION.is_dir():
+    os.environ.setdefault("USE_LOCAL_MODELS", "true")
     os.environ.setdefault("MOODLENS_EMOTION_MODEL_ID", str(LOCAL_EMOTION))
 
 if LOCAL_SARCASM.is_dir():
+    os.environ.setdefault("USE_LOCAL_MODELS", "true")
     os.environ.setdefault("MOODLENS_SARCASM_MODEL_ID", str(LOCAL_SARCASM))
 
 sys.path.insert(0, str(BACKEND_DIR))

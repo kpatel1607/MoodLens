@@ -3,6 +3,7 @@
 .env.*
 !.env.example
 *.env
+HF_TOKEN
 *.pem
 *.key
 secrets/
@@ -31,6 +32,10 @@ env/
 *.log
 
 # Hugging Face / model artifacts
+/saved_models/**/model.safetensors
+/saved_models/**/*.safetensors
+/backend/saved_models/**/model.safetensors
+/backend/saved_models/**/*.safetensors
 /models/
 /model_cache/
 .cache/
