@@ -2,6 +2,9 @@ import os
 import json
 from functools import lru_cache
 
+os.environ.setdefault("HF_HOME", "/tmp/huggingface")
+os.environ.setdefault("HF_HUB_CACHE", "/tmp/huggingface/hub")
+
 import torch
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"

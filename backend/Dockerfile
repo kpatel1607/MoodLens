@@ -5,7 +5,7 @@ WORKDIR /app
 ENV TRANSFORMERS_NO_TF=1
 ENV USE_TF=0
 ENV HF_HOME=/tmp/huggingface
-ENV TRANSFORMERS_CACHE=/tmp/huggingface
+ENV HF_HUB_CACHE=/tmp/huggingface/hub
 ENV PYTHONUNBUFFERED=1
 
 COPY requirements.txt .
