@@ -47,7 +47,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Future<void> _signOut() async {
     await _authService.signOut();
-    await _authService.ensureAnonymousLogin();
 
     if (!mounted) return;
 
@@ -186,11 +185,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   if (isGuest)
                     FilledButton.icon(
-                      onPressed: () {
+                      onPressed: () async {
+                        await _authService.signOut();
+
+                        if (!context.mounted) return;
+
                         Navigator.pop(context);
                       },
                       icon: const Icon(Icons.login),
-                      label: const Text('Login from Home'),
+                      label: const Text('Sign In / Create Account'),
                     ),
                 ],
               ),

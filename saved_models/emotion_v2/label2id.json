@@ -1,0 +1,14 @@
+{
+    "anger": 0,
+    "annoyance": 1,
+    "confusion": 2,
+    "disappointment": 3,
+    "fear": 4,
+    "gratitude": 5,
+    "joy": 6,
+    "love": 7,
+    "neutral": 8,
+    "optimism": 9,
+    "sadness": 10,
+    "surprise": 11
+}

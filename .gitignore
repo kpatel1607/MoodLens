@@ -2,11 +2,16 @@
 .env
 .env.*
 !.env.example
+*.env
 *.pem
 *.key
+secrets/
+serviceAccountKey.json
 *serviceAccount*.json
 *service-account*.json
 *firebase-adminsdk*.json
+firebase-adminsdk*.json
+google-services.json
 local_secrets.*
 
 # Python
@@ -26,18 +31,22 @@ env/
 *.log
 
 # Hugging Face / model artifacts
-backend/saved_models/
-saved_models/
-models/
-model_cache/
+/models/
+/model_cache/
 .cache/
 hf_cache/
+huggingface_cache/
 huggingface/
+.huggingface/
+models--*/
+snapshots/
+blobs/
 *.safetensors
 *.bin
 *.pt
 *.pth
 *.onnx
+*.ckpt
 
 # Flutter / Dart
 **/.dart_tool/

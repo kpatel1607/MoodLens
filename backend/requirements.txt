@@ -2,7 +2,7 @@ fastapi
 uvicorn
 torch
 transformers
-huggingface_hub
+huggingface_hub>=0.30.0,<1.0
 sentencepiece
 accelerate
 numpy
